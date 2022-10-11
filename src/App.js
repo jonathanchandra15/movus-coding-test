@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState} from 'react';
+import BarChartComponent from './components/BarChart';
+import CounterCard from './components/CounterCard';
 
 function App() {
+  const [carMakerCounter, setCarMakerCounter] = useState(0);
+  const [carModelCounter, setCarModelCounter] = useState(0);
+
+  function setCounters(carMakerCounter, carModelCounter) {
+    setCarMakerCounter(carMakerCounter);
+    setCarModelCounter(carModelCounter);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex flex-col p-4 items-center'>
+      <h1 className='text-5xl mb-8 font-bold text-rose-700'>
+        Dashboard Page
+      </h1>
+      <CounterCard 
+        carMakerCounter={carMakerCounter}
+        carModelCounter={carModelCounter} />
+      <BarChartComponent 
+        setCounters={setCounters}/>
     </div>
   );
 }
